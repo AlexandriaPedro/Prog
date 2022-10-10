@@ -1,6 +1,3 @@
-from multiprocessing.resource_sharer import stop
-
-
 def pagamento(valh, quah):
     sal = valh * quah
     if sal <= 900:
