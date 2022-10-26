@@ -1,15 +1,18 @@
-string = input("")
+frase = input("")
 
+aux = ''
 i = 0
 
-while i < len(string):
-    c = i + 1
-    if c < len(string):
-        if string[i] == string[c]:
-            a = string[i] + string[c]
-            b = string[i].upper
-            
-            string = string.replace(a, b)
-    i += 1
+while i < len(frase):
+    if i + 1 < len(frase):
+        if frase[i] == frase[i+1]:
+            aux += frase[i].upper()
+            i+=2
+        else:
+            aux += frase[i]
+            i+=1
+    else:
+        aux += frase[i]
+        break
 
-print(string)
+print(aux.lstrip())
