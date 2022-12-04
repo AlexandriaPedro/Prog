@@ -1,13 +1,17 @@
-maior = 0
-palavramaior = ''
+dicionario = dict()
 
-texto = open('texto.txt')
+palavra = str(input(""))
 
-for linha in texto:
-    for i in linha.split():
-        if len(i) > maior:
-            maior = len(i)
-            palavramaior = i
+for letra in palavra:
+    if letra in 'aeiou':
+        dicionario[letra] = dicionario.get(letra, 0) + 1
 
-print(palavramaior)
-print(maior)
+maior_valor = 0
+maior_letra = None
+
+for letra, valor in dicionario.items():
+    if valor > maior_valor:
+        maior_valor = valor
+        maior_letra = letra
+
+print(maior_letra)

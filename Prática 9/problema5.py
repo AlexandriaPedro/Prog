@@ -1,17 +1,39 @@
-texto = open('notas.txt')
+dicionario = dict()
 
-for linha in texto:
-    soma = 0
-    
-    array = linha.split(" ")
-    
-    for i in array:
-        if i != array[0]:
-            soma += int(i)  
+rna = str(input("Digite o RNA: "))
 
-    media = soma / 4
-    
-    if media >= 60:
-        nome = array[0]
+a = rna[:3]
+b = rna[3:6]
+c = rna[6:9]
 
-        print("Nome: {} - Média: {:.2f}".format(nome, media))
+lista = [a, b, c]
+
+for letra in lista:
+    if (letra == 'UUU'):
+        dicionario[letra] = 'Phe-'
+    elif (letra == 'CUU' or letra == 'UUA'):
+        dicionario[letra] = 'Leu-'
+    elif (letra == 'AAG'):
+        dicionario[letra] = 'Lisina-'
+    elif (letra == 'UCU'):
+        dicionario[letra] = 'Ser-'
+    elif (letra == 'UAU'):
+        dicionario[letra] = 'Tyr-'
+    elif (letra == 'CAA'):
+        dicionario[letra] = 'Gln-'
+
+print("Cadeia de Aminoácidos: ", end="")
+
+lista = list()
+
+for x in dicionario.values():
+    lista.append(x)
+
+for x in lista:
+    if x == lista[len(lista) - 1]:
+        lista[len(lista) - 1] = x[:3]
+
+frase = ''
+frase = frase.join(lista)
+
+print(frase)

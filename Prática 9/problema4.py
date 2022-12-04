@@ -1,26 +1,21 @@
-mais_recente = '00/00/0000'
+dicionario = dict()
 
-arquivo = open('datas.txt')
+aux = True
 
-for data in arquivo:
-    dia_data1 = int(mais_recente[:2])
-    dia_data2 = int(data[:2])
-    mes_data1 = int(mais_recente[3:5])
-    mes_data2 = int(data[3:5])
-    ano_data1 = int(mais_recente[6:])
-    ano_data2 = int(data[6:])
-
-    if ano_data1 > ano_data2:
-        mais_recente =  mais_recente
-    elif ano_data1 < ano_data2:
-        mais_recente =  data
-    elif mes_data1 > mes_data2:
-        mais_recente =  mais_recente
-    elif mes_data1 < mes_data2:
-        mais_recente =  data
-    elif dia_data1 > dia_data2:
-        mais_recente =  mais_recente
+while (aux == True):
+    numero = int(input(""))
+    
+    if (numero != -1):
+        dicionario[numero] = dicionario.get(numero, 0) + 1
     else:
-        mais_recente =  data
+        aux = False
 
-print(mais_recente, end='')
+numero_mais_digitado = None
+numero_mais_digitado_quantidade = 0
+
+for x, y in dicionario.items():
+    if y > numero_mais_digitado_quantidade:
+        numero_mais_digitado_quantidade = y
+        numero_mais_digitado = x
+
+print(numero_mais_digitado)
