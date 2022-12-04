@@ -1,39 +1,29 @@
+dicionario_aminioacido = {'UUU': 'Phe', 'CUU': 'Leu', 'UUA': 'Leu', 'AAG': 'Lisina', 'UCU': 'Ser', 'UAU': 'Tyr', 'CAA': 'Gln'}
+
 dicionario = dict()
+lista = list()
 
 rna = str(input("Digite o RNA: "))
 
-a = rna[:3]
-b = rna[3:6]
-c = rna[6:9]
+rna = list(rna)
 
-lista = [a, b, c]
+tamanho_rna = len(rna)
 
-for letra in lista:
-    if (letra == 'UUU'):
-        dicionario[letra] = 'Phe-'
-    elif (letra == 'CUU' or letra == 'UUA'):
-        dicionario[letra] = 'Leu-'
-    elif (letra == 'AAG'):
-        dicionario[letra] = 'Lisina-'
-    elif (letra == 'UCU'):
-        dicionario[letra] = 'Ser-'
-    elif (letra == 'UAU'):
-        dicionario[letra] = 'Tyr-'
-    elif (letra == 'CAA'):
-        dicionario[letra] = 'Gln-'
+numero_de_divisoes = int(tamanho_rna / 3)
 
-print("Cadeia de Aminoácidos: ", end="")
+aux = 3
 
-lista = list()
+for i in range(1, numero_de_divisoes):
+    rna.insert(aux, '-')
+    
+    aux += 4
 
-for x in dicionario.values():
-    lista.append(x)
 
-for x in lista:
-    if x == lista[len(lista) - 1]:
-        lista[len(lista) - 1] = x[:3]
+rna = ''.join(rna)
 
-frase = ''
-frase = frase.join(lista)
 
-print(frase)
+for i in range(0, len(dicionario_aminioacido)):
+    for x, y in dicionario_aminioacido.items():
+        rna = rna.replace(x, y)
+
+print("Cadeia de Aminoácidos: {}".format(rna))
